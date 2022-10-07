@@ -7,6 +7,7 @@ from trainer import trainer
 from datasetCreator import datasetCreator
 from detctor import detector
 
+
 def main():
     while True:
         print("Enter 1 for create dataset of user")
@@ -43,5 +44,7 @@ def main():
         else:
             print("Please choose right choice")
 
+
 if __name__ == "__main__":
    main()
+
