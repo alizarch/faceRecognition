@@ -8,6 +8,7 @@ from datasetCreator import datasetCreator
 from detctor import detector
 
 
+
 def main():
     while True:
         print("Enter 1 for create dataset of user")
