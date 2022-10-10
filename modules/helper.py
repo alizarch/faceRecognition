@@ -2,6 +2,7 @@ from time import process_time
 import mysql.connector as connector
 import sys
 
+
 class DBHelper:
     def __init__(self):
         self.con = connector.connect(user='root',
@@ -12,14 +13,14 @@ class DBHelper:
 
     def insert_user(self, user_id, username):
         try:
-            query = "INSERT INTO users(user_id,username,statuss) values('{}','{}','{}')".format(user_id,username, 1)
+            query = "INSERT INTO users(user_id,username,statuss) values('{}','{}','{}')".format(user_id, username, 1)
             cur = self.con.cursor()
             cur.execute(query)
             self.con.commit()
             cur.close()
             self.con.close()
             print("\n\n\t\t\t\t\t********** SUCCESSFULLY USERS SAVE **********\n\n")
-        except :
+        except:
             print("ID is already exist")
             sys.exit()
 
@@ -35,9 +36,9 @@ class DBHelper:
         except:
             print("attendance is already marked")
 
-    def Fetch_by_id(self,user_id):
+    def Fetch_by_id(self, user_id):
         flag = True
-        query = "SELECT * FROM users WHERE user_id ='{}'". format(user_id)
+        query = "SELECT * FROM users WHERE user_id ='{}'".format(user_id)
         cur = self.con.cursor()
         cur.execute(query)
         c = cur.fetchall()
@@ -49,10 +50,10 @@ class DBHelper:
             out = [item for t in c for item in t]
             cur.close()
             return out
-    
+
     def Fetch_by_id_attendance(self, user_id):
         flag = True
-        query = "SELECT * FROM attendance WHERE user_id ='{}'". format(user_id)
+        query = "SELECT * FROM attendance WHERE user_id ='{}'".format(user_id)
         cur = self.con.cursor()
         cur.execute(query)
         c = cur.fetchall()

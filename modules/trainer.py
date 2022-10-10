@@ -2,6 +2,8 @@ import cv2
 import os
 import numpy as np
 from PIL import Image
+
+
 def trainer(datapath):
     faceCascade = cv2.CascadeClassifier('xml_file/aiFace_haarcascade.xml')
     image_paths = [os.path.join(datapath, f) for f in os.listdir(datapath)]
@@ -10,13 +12,13 @@ def trainer(datapath):
     # labels will contains the label that is assigned to the image
     labels = []
     for image_path in image_paths:
-    # Read the image and convert to grayscale
+        # Read the image and convert to grayscale
         image_pil = Image.open(image_path).convert('L')
         # Convert the image format into numpy array
         image = np.array(image_pil, 'uint8')
         # Get the label of the image
         nbr = int(os.path.split(image_path)[1].split("_")[0].replace("face-", ""))
-        #nbr=int(''.join(str(ord(c)) for c in nbr))
+        # nbr=int(''.join(str(ord(c)) for c in nbr))
         print(nbr)
         # Detect the face in the image
         faces = faceCascade.detectMultiScale(image)
